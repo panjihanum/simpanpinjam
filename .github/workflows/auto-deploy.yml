@@ -1,0 +1,18 @@
+name: Simpan Pinjam
+on: [push]
+jobs:
+  build:
+    name: Build
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@v1
+
+      - name: Deploy With SSH
+        uses: ./
+        with:
+          host: ${{ secrets.HOST }}
+          username: ${{ secrets.USERNAME }}
+          key: ${{ secrets.KEY }}
+          port: ${{ secrets.PORT }}
+          script: sh ~/scripts/simpanpinjambe.sh
